@@ -1,0 +1,46 @@
+{
+  "name": "rabbitmq-boilerplate",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Node RabbitMQ Boilerplate",
+  "author": "Kenny Chang <yo8568@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "npm run prod",
+    "prod": "cross-env NODE_ENV=production node bin/worker.js",
+    "dev": "nodemon bin/worker.js",
+    "build": "babel src -d dist --copy-files",
+    "test": "cross-env NODE_ENV=test jest --forceExit",
+    "test:coverage": "npm test -- --coverage",
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint src test"
+  },
+  "dependencies": {
+    "amqplib": "^0.5.1",
+    "commander": "^2.9.0",
+    "dotenv": "^4.0.0",
+    "safe-buffer": "^5.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-jest": "^20.0.3",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "cross-env": "^4.0.0",
+    "eslint": "^3.15.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-node": "^4.2.2",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "jest": "^20.0.3",
+    "nodemon": "^1.11.0",
+    "rimraf": "^2.5.4"
+  },
+  "bin": {
+    "worker": "bin/worker.js"
+  }
+}

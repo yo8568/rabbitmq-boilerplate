@@ -1,0 +1,10 @@
+app/node_modules
+npm-debug.log
+dist
+logs/*
+!logs/.gitkeep
+coverage
+.nyc_output
+.DS_Store
+jest_0
+.env

@@ -1,0 +1,34 @@
+
+version: '2'
+
+services:
+  rabbit-manager:
+    image: rabbitmq:3-management
+    hostname: rabbit-manager
+    container_name: rabbit-manager
+    environment:
+      - RABBITMQ_ERLANG_COOKIE=${RABBITMQ_ERLANG_COOKIE}
+      - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
+      - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
+    ports:
+      - 8081:15672
+      - 5672:5672
+  
+  brokers:
+    image: rabbitmq-boilerplate
+    build: ./app
+    container_name: brokers
+    environment:
+      - RABBITMQ_URI=${RABBITMQ_URI}
+    command: npm start -- -- -b hello_world
+    restart: always
+
+  consumers:
+    image: rabbitmq-boilerplate
+    build: ./app
+    container_name: consumers
+    command: npm start -- -- -c hello_world
+    restart: always
+
+
+    
